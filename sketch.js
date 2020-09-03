@@ -41,7 +41,7 @@ function preload()
 
 function setup()
 {
-    var canvas = createCanvas(displayWidth,displayHeight-140);
+    var canvas = createCanvas(windowWidth,windowHeight);
 
    //adding background and giving velocity
     asteroidGroup = new Group();
