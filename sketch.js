@@ -50,14 +50,14 @@ function setup()
 
     
 
-    backgr = createSprite(600,0,1200,1200);
+    backgr = createSprite(600,0,windowWidth,windowHeight);
     backgr.addImage(background_img);
     backgr.y=backgr.height/2;
     
     backgr.scale = 4;
     
     //Flying astronaut
-    astronautFlying =  createSprite(length-450,600,20,20);
+    astronautFlying =  createSprite(750,600,20,20);
     astronautFlying.addImage(astronaut_Flying_img);
     astronautFlying.scale = 0.12;
     astronautFlying.visible = true;
