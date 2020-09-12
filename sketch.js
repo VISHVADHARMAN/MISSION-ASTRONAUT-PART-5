@@ -90,8 +90,9 @@ function setup()
 
 function draw(){
     background(0);
-    if(keyDown("space") && gameState === SERVE){
+    if(touches.length>0 || keyDown("space") && gameState === SERVE){
         gameState = PLAY;
+        touches[];
     }
     
     if(gameState === PLAY)
