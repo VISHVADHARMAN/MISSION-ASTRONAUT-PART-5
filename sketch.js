@@ -50,14 +50,14 @@ function setup()
 
     
 
-    backgr = createSprite(600,0,windowWidth,windowHeight);
+    backgr = createSprite(600,0,1200,1200);
     backgr.addImage(background_img);
     backgr.y=backgr.height/2;
     
     backgr.scale = 4;
     
     //Flying astronaut
-    astronautFlying =  createSprite(width-375,600,20,20);
+    astronautFlying =  createSprite(750,600,20,20);
     astronautFlying.addImage(astronaut_Flying_img);
     astronautFlying.scale = 0.12;
     astronautFlying.visible = true;
@@ -90,15 +90,15 @@ function setup()
 
 function draw(){
     background(0);
-    if(touches.length>0 || keyDown("space") && gameState === SERVE){
+    if(touches.length>0 && keyDown("space") && gameState === SERVE){
         gameState = PLAY;
-        touches[];
+        touches();
     }
     
     if(gameState === PLAY)
     {
-        backgr.velocityY = - (6 + 4*distance/500);
-        distance = distance + Math.round(getFrameRate()/40);
+        backgr.velocityY = - (6 + 3*distance/500);
+        distance = distance + Math.round(getFrameRate()/50);
         asteroids();
         aliens();
         
@@ -139,7 +139,7 @@ function draw(){
             gameOverSound.play();
         }
 
-        if(distance === 20000){
+        if(distance === 5000){
             gameState = WIN;
         }
         
@@ -176,7 +176,7 @@ function draw(){
 
     if(gameState === SERVE){
         text("PRESS SPACE TO START THE GAME", 500, 300,fill("gold"),textSize(30),textFont("Georgia"));
-        text("WHEN THE ASTRONAUT REACHES THE DISTANCE OF 20000 MILES WITHOUT BEING HIT BY OBSTACLES, YOU WIN", 270,350,fill("orange"),textSize(18),textFont("Algerian"),textStyle(BOLD));
+        text("WHEN THE ASTRONAUT REACHES THE DISTANCE OF 5000 MILES WITHOUT BEING HIT BY OBSTACLES, YOU WIN", 270,350,fill("orange"),textSize(18),textFont("Algerian"),textStyle(BOLD));
         text("IF THE ASTRONAUT HITS THE ALIENS OR ASTEROIDS, GAME OVER", 460,390,textSize(18));
     }
 
@@ -200,7 +200,7 @@ function asteroids(){
     if(World.frameCount % 60 === 0){
         asteroid = createSprite(random(100,1400),0,40,40);
         asteroid.addImage(asteroids_img);
-        asteroid.velocityY = 6 + 4*distance/500;
+        asteroid.velocityY = 6 + 3*distance/500;
         asteroid.lifetime = 240;
         asteroidGroup.add(asteroid);
         
@@ -212,7 +212,7 @@ function aliens(){
         alien = createSprite(random(50,1000),0,40,40);
         alien.scale = 2;
         alien.addImage(alien_img);
-        alien.velocityY = 6 + 4*distance/500;
+        alien.velocityY = 6 + 3*distance/500;
         alien.lifetime = 240;
         alienGroup.add(alien);  
     }
