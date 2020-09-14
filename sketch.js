@@ -90,7 +90,7 @@ function setup()
 
 function draw(){
     background(0);
-    if(keyDown("space") && gameState === SERVE){
+    if(keyDown("space") || gameState === SERVE){
         gameState = PLAY;
     }
     
